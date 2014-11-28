@@ -11,6 +11,7 @@
 function islandora_newspaper_batch_default_rules_configuration() {
   $configs = array();
 
+// @codingStandardsIgnoreStart
   $parse_exported = <<<'EOE'
 { "islandora_newspaper_batch_newspaper_issue_ingested" : {
     "LABEL" : "Newspaper Issue Ingested",
@@ -61,9 +62,12 @@ function islandora_newspaper_batch_default_rules_configuration() {
   }
 }
 EOE;
+  ;
+// @codingStandardsIgnoreEnd
   $parsed_parse = rules_import($parse_exported);
   $configs[$parsed_parse->name] = $parsed_parse;
 
+// @codingStandardsIgnoreStart
   $complete_exported = <<<EOE
 { "islandora_newspaper_batch_newspaper_issue_batch_complete" : {
     "LABEL" : "Newspaper Issue Batch Complete",
@@ -100,6 +104,7 @@ EOE;
   }
 }
 EOE;
+// @codingStandardsIgnoreEnd
   $parsed_complete = rules_import($complete_exported);
   $configs[$parsed_complete->name] = $parsed_complete;
   return $configs;

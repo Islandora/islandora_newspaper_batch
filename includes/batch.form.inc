@@ -68,7 +68,7 @@ function islandora_newspaper_batch_form($form, &$form_state, $object) {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Submit'),
+    '#value' => t('Ingest'),
   );
 
   return $form;
