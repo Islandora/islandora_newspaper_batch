@@ -22,7 +22,7 @@ before_install:
   - cd $HOME/drupal-*
   - ln -s $TRAVIS_BUILD_DIR sites/all/modules/islandora_newspaper_batch
   - ln -s $HOME/islandora_batch sites/all/modules/islandora_batch
-  - ln -s $HOME/islandora_solution_pack_book sites/all/modules/islandora_solution_pack_book
+  - ln -s $HOME/islandora_solution_pack_newspaper sites/all/modules/islandora_solution_pack_newspaper
   - ln -s $HOME/islandora_paged_content sites/all/modules/islandora_paged_content
   - ln -s $HOME/islandora_solution_pack_collection sites/all/modules/islandora_solution_pack_collection
   - drush en --yes --user=1 islandora_newspaper_batch islandora_basic_collection
