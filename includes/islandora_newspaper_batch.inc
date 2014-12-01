@@ -7,6 +7,9 @@
 
 /**
  * Batch preprocessor.
+ *
+ * XXX: We should probably make IslandoraPagedContentBatch and have the
+ * other two batches extend the base.
  */
 class IslandoraNewspaperBatch extends IslandoraScanBatch {
   /**
@@ -111,7 +114,7 @@ class IslandoraNewspaperBatch extends IslandoraScanBatch {
           ))
           ->condition('id', $children, 'IN')
           ->execute();
-        // Set newspaper ready to go (after children, that is).
+        // Set newspaper issue ready to go (after children, that is).
         db_update('islandora_batch_state')
           ->fields(array(
             'state' => ISLANDORA_BATCH_STATE__PENDING_CHILDREN,

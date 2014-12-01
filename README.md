@@ -2,7 +2,8 @@
 
 ## Introduction
 
-This module implements a batch framework, as well as a basic ZIP/directory ingester.
+This module extends the Islandora batch framework so as to provide a Drush and
+GUI option to add newspaper issues and pages to an existing newspaper object.
 
 The ingest is a two-step process:
 

@@ -43,7 +43,7 @@ function islandora_newspaper_batch_drush_command() {
         'value' => 'optional',
       ),
       'parent_relationship_pred' => array(
-        'description' => 'The predicate of the relationship to the parent. Defaults to "isMemberOfCollection".',
+        'description' => 'The predicate of the relationship to the parent. Defaults to "isMemberOf".',
         'value' => 'optional',
       ),
       'create_pdfs' => array(
