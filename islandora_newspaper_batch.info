@@ -1,5 +1,5 @@
 name = Islandora Newspaper Batch
-description = "Batch ingest objects"
+description = "Batch ingest newspaper issue and page objects"
 package = Islandora
 version = 7.x-dev
 core = 7.x
