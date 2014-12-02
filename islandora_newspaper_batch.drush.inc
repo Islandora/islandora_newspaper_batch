@@ -36,7 +36,7 @@ function islandora_newspaper_batch_drush_command() {
       ),
       'parent' => array(
         'description' => 'The collection to which the generated items should be added.  Only applies to the "newspaper issue" level object. If "directory" and the directory containing the newspaper issue description is a valid PID, it will be set as the parent. If this is specified and itself is a PID, all newspapers issue will be related to the given PID.',
-        'value' => 'optional',
+        'required' => TRUE,
       ),
       'parent_relationship_uri' => array(
         'description' => 'The namespace URI of the relationship to the parent. Defaults to "info:fedora/fedora-system:def/relations-external#".',
@@ -112,4 +112,18 @@ function drush_islandora_newspaper_batch_preprocess() {
 
   // Pass the preprocessor off to run.
   $preprocessed = islandora_batch_handle_preprocessor($preprocessor);
+}
+
+/**
+ * Parent validation.
+ */
+function drush_islandora_newspaper_batch_preprocess_validate() {
+  $parent = drush_get_option('parent');
+  $object = islandora_object_load($parent);
+  if (!$object) {
+    return drush_set_error('This is not a valid parent', dt('The specified parent (@parent) was unable to be loaded.', array('@parent' => $parent)));
+  }
+  if (!in_array('islandora:newspaperCModel', $object->models)) {
+    return drush_set_error('Not a newspaper object', dt('The specified parent (@parent) is not a newspaper object.', array('@parent' => $parent)));
+  }
 }
