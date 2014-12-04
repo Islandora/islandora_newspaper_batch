@@ -369,13 +369,28 @@ class IslandoraNewspaperIssueBatchObject extends IslandoraNewspaperFlatBatchObje
    */
   public function __construct(IslandoraTuque $connection, $base_name, $object_info, $pp) {
     parent::__construct($connection, $base_name, $object_info, $pp);
-
+    $this->parentNewspaper = $pp['parent'];
     if ($pp['directory_dedup'] && $pp['type'] == 'directory') {
       $this->resources['newspaper_directory'] = array(
         drupal_realpath($pp['target'] . '/' . $this->baseName),
       );
     }
   }
+
+  /**
+   * Function batchProcess.
+   */
+  public function batchProcess() {
+    module_load_include('inc', 'islandora_newspaper', 'includes/utilities');
+    // Need to add the sequence number on run time as we can't serialize it as
+    // order may change before it's ingested.
+    $newspaper = islandora_object_load($this->parentNewspaper);
+    $issues = islandora_newspaper_get_issues($newspaper);
+    $num_issues = count($issues) + 1;
+    $this->relationships->add(ISLANDORA_RELS_EXT_URI, 'isSequenceNumber', (string) $num_issues, RELS_TYPE_PLAIN_LITERAL);
+    return parent::batchProcess();
+  }
+
   /**
    * Function initialBatchState.
    */
