@@ -387,7 +387,7 @@ class IslandoraNewspaperIssueBatchObject extends IslandoraNewspaperFlatBatchObje
     $newspaper = islandora_object_load($this->parentNewspaper);
     $issues = islandora_newspaper_get_issues($newspaper);
     $num_issues = count($issues) + 1;
-    $this->relationships->add(ISLANDORA_RELS_EXT_URI, 'isSequenceNumber', (string) $num_issues, TRUE);
+    $this->relationships->add(ISLANDORA_RELS_EXT_URI, 'isSequenceNumber', (string) $num_issues, RELS_TYPE_PLAIN_LITERAL);
     return parent::batchProcess();
   }
 
