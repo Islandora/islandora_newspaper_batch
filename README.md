@@ -48,7 +48,7 @@ Files are assigned to object datastreams based on their basename, so a folder st
     * 2/
         * OBJ.tiff
 
-would result in a two-page newspaper issue.
+would result in a two-page newspaper issue. Other files, with base names corresponding to datastream IDs, can be included in each page subfolder, such as JP2.jp2, OCR.txt, and TN.jpg. If files like these are included, they will be used as the content of their respective datastreams, and the batch process will not recreate the datastreams.
 
 A file named --METADATA--.xml can contain either MODS, DC or MARCXML which is used to fill in the MODS or DC streams (if not provided explicitly). Similarly, --METADATA--.mrc (containing binary MARC) will be transformed to MODS and then possibly to DC, if neither are provided explicitly.
 
@@ -57,6 +57,40 @@ If no MODS is provided at the newspaper issue level - either directly as MODS.xm
 The queue of preprocessed items can then be processed:
 
 `drush -v --user=admin --uri=http://localhost islandora_batch_ingest`
+
+### Sample Issue-level MODS.xml file
+Here is a sample MODS file describing a newspaper issue. Note that it does not contain a `<relatedItem>` element as a direct child of `<mods>`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <titleInfo>
+      <title>Canadian Jewish Review, June 1, 1928</title>
+    </titleInfo>
+    <originInfo>
+      <place>
+        <placeTerm>Toronto, Ontario</placeTerm>
+      </place>
+      <publisher>Canadian Jewish Review </publisher>
+      <dateIssued encoding="iso8601">1928-06-01</dateIssued>
+    </originInfo>
+    <language>
+      <languageTerm>eng</languageTerm>
+    </language>
+    <subject>
+      <topic>Jews, Canadian -- Ontario -- Toronto -- History -- Newspapers</topic>
+      <topic>Jews, Canadian -- Quebec -- Montreal -- History -- Newspapers</topic>
+      <topic>Jews -- History -- 20th century -- Newspapers</topic>
+      <topic>Jews -- Canada -- Periodicals</topic>
+      <topic>Canada -- History -- 20th century -- Newspapers</topic>
+      <topic>Ontario -- History -- 20th century -- Newspapers</topic>
+      <topic>Quebec -- History -- 20th century -- Newspapers</topic>
+      <topic>Toronto (Ont.) -- History -- 20th century -- Newspapers</topic>
+      <topic>Montreal (Que.) -- History -- 20th century -- Newspapers</topic>
+    </subject>
+    <identifier>Cjewish-1928-06-01</identifier>
+</mods>
+```
 
 ### Customization
 
