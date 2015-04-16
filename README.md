@@ -33,7 +33,7 @@ N/A
 
 The base ZIP/directory preprocessor can be called as a drush script (see `drush help islandora_newspaper_batch_preprocess` for additional parameters):
 
-`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=zip --target=/path/to/archive.zip --parent=namespace:some_newspaper`
+`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=zip --target=/path/to/archive.zip --namespace=mynamespace --parent=namespace:some_newspaper`
 
 This will populate the queue (stored in the Drupal database) with base entries.
 
@@ -91,10 +91,6 @@ Here is a sample MODS file describing a newspaper issue. Note that it does not c
     <identifier>Cjewish-1928-06-01</identifier>
 </mods>
 ```
-
-### Customization
-
-Custom ingests can be written by [extending](https://github.com/Islandora/islandora_batch/wiki/How-To-Extend) any of the existing preprocessors and batch object implementations.
 
 ## Troubleshooting/Issues
 
