@@ -33,9 +33,9 @@ N/A
 
 The base ZIP/directory preprocessor can be called as a drush script (see `drush help islandora_newspaper_batch_preprocess` for additional parameters):
 
-`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=zip --target=/path/to/archive.zip --namespace=mynamespace --parent=namespace:some_newspaper`
+`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --target=/path/to/issues --namespace=dailyplanet --parent=islandora:dailyplanet`
 
-This will populate the queue (stored in the Drupal database) with base entries.
+This will populate the queue (stored in the Drupal database) with base entries. Note that the --parent parmater must be a newspaper, not a collection.
 
 Newspaper must be broken up into separate directories, such that each directory at the "top" level (in the target directory or Zip file) represents a newspaper issue. Newspaper pages are their own directories inside of each newsppaper issue directory.
 
