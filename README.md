@@ -1,4 +1,4 @@
-# Islandora Newspaper Batch [![Build Status](https://travis-ci.org/discoverygarden/islandora_newspaper_batch.png?branch=7.x)](https://travis-ci.org/discoverygarden/islandora_newspaper_batch)
+# Islandora Newspaper Batch [![Build Status](https://api.travis-ci.org/Islandora/islandora_newspaper_batch.png?branch=7.x)](https://travis-ci.org/Islandora/islandora_newspaper_batch)
 
 ## Introduction
 
@@ -12,24 +12,8 @@ The ingest is a two-step process:
   be completed outside of a batch process.
 * Ingest: The data is actually processed and ingested. This happens inside of
   a Drupal batch.
-
-## Requirements
-
-This module requires the following modules/libraries:
-
-* [Islandora](https://github.com/islandora/islandora)
-* [Tuque](https://github.com/islandora/tuque)
-
-
-# Installation
-
-Install as usual, see [this](https://drupal.org/documentation/install/modules-themes/modules-7) for further information.
-
-## Configuration
-
-N/A
-
-### Usage
+  
+**Usage**
 
 The base ZIP/directory preprocessor can be called as a drush script (see `drush help islandora_newspaper_batch_preprocess` for additional parameters):
 
@@ -58,7 +42,8 @@ The queue of preprocessed items can then be processed:
 
 `drush -v --user=admin --uri=http://localhost islandora_batch_ingest`
 
-### Sample Issue-level MODS.xml file
+**Sample Issue-level MODS.xml file** 
+
 Here is a sample MODS file describing a newspaper issue. Note that it does not contain a `<relatedItem>` element as a direct child of `<mods>`:
 
 ```xml
@@ -92,6 +77,26 @@ Here is a sample MODS file describing a newspaper issue. Note that it does not c
 </mods>
 ```
 
+## Requirements
+
+This module requires the following modules/libraries:
+
+* [Islandora](https://github.com/islandora/islandora)
+* [Tuque](https://github.com/islandora/tuque)
+
+
+# Installation
+
+Install as usual, see [this](https://drupal.org/documentation/install/modules-themes/modules-7) for further information.
+
+## Configuration
+
+N/A
+
+## Documentation
+
+Further documentation for this module is available at [our wiki](https://wiki.duraspace.org/display/ISLANDORA/Islandora+Newspaper+Batch).
+
 ## Troubleshooting/Issues
 
 Having problems or solved a problem? Check out the Islandora google groups for a solution.
@@ -101,15 +106,18 @@ Having problems or solved a problem? Check out the Islandora google groups for a
 
 ## Maintainers/Sponsors
 
-* [discoverygarden](https://github.com/discoverygarden)
+Current maintainers:
+* [Mark Jordan](https://github.com/mjordan/)
 
-This project has been sponsored by:
+Sponsors:
 
 * [Simon Fraser University Library](http://www.lib.sfu.ca/)
 
 ## Development
 
-If you would like to contribute to this module, please check out our helpful [Documentation for Developers](https://github.com/Islandora/islandora/wiki#wiki-documentation-for-developers) info, as well as our [Developers](http://islandora.ca/developers) section on the Islandora.ca site.
+If you would like to contribute to this module, please check out [CONTRIBUTING.md](CONTRIBUTING.md). In addition, we have helpful [Documentation for Developers](https://github.com/Islandora/islandora/wiki#wiki-documentation-for-developers) info, as well as our [Developers](http://islandora.ca/developers) section on the [Islandora.ca](http://islandora.ca) site.
+
+Also include any Travis gotcha's here. 
 
 ## License
 
