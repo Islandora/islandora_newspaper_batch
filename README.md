@@ -21,18 +21,35 @@ The base ZIP/directory preprocessor can be called as a drush script (see `drush 
 
 This will populate the queue (stored in the Drupal database) with base entries. Note that the --parent parmater must be a newspaper, not a collection.
 
-Newspaper must be broken up into separate directories, such that each directory at the "top" level (in the target directory or Zip file) represents a newspaper issue. Newspaper pages are their own directories inside of each newsppaper issue directory.
+Batches must be broken up into separate directories (or Zip files), such that each directory at the "top" level (in the target directory or Zip file) represents a newspaper issue. Newspaper pages are their own directories inside of each newsppaper issue directory.
 
 Files are assigned to object datastreams based on their basename, so a folder structure like:
 
-* my_cool_newspaper/
+* my_batch/
+  * issue1/
     * MODS.xml
     * 1/
         * OBJ.tiff
     * 2/
         * OBJ.tiff
 
-would result in a two-page newspaper issue. Other files, with base names corresponding to datastream IDs, can be included in each page subfolder, such as JP2.jp2, OCR.txt, and TN.jpg. If files like these are included, they will be used as the content of their respective datastreams, and the batch process will not recreate the datastreams.
+would result in a two-page newspaper issue. Other files, with base names corresponding to datastream IDs, can be included in each page subfolder, such as JP2.jp2, OCR.txt, and TN.jpg:
+
+* my_batch/
+  * issue1/
+    * MODS.xml
+    * 1/
+        * OBJ.tiff
+        * JP2.jp2
+        * OCR.txt
+        * TN.jpg
+    * 2/
+        * OBJ.tiff
+        * JP2.jp2
+        * OCR.txt
+        * TN.jpg
+
+If files like these are included, they will be used as the content of their respective datastreams, and the batch process will not recreate the datastreams, which can speed up batch ingests substantially.
 
 A file named --METADATA--.xml can contain either MODS, DC or MARCXML which is used to fill in the MODS or DC streams (if not provided explicitly). Similarly, --METADATA--.mrc (containing binary MARC) will be transformed to MODS and then possibly to DC, if neither are provided explicitly.
 
