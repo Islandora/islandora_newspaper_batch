@@ -61,6 +61,7 @@ function islandora_newspaper_batch_form($form, &$form_state, $object) {
             ':input[name="generate_ocr"]' => array('checked' => FALSE),
           ),
         ),
+      );
     }
   }
   $form['email_admin'] = array(
