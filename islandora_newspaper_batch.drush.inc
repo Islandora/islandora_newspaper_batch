@@ -54,6 +54,10 @@ function islandora_newspaper_batch_drush_command() {
         'description' => 'A flag to allow for conditional OCR generation.',
         'value' => 'optional',
       ),
+      'aggregate_ocr' => array(
+        'description' => 'A flag to cause OCR to be aggregated to issues, if OCR is also being generated per-page.',
+        'value' => 'optional',
+      ),
       'email_admin' => array(
         'description' => 'A flag to notify the site admin when the newspaper issue is fully ingested (depends on Rules being enabled).',
         'value' => 'optional',
@@ -90,6 +94,7 @@ function drush_islandora_newspaper_batch_preprocess() {
     'parent_relationship_uri' => drush_get_option('parent_relationship_uri', 'info:fedora/fedora-system:def/relations-external#'),
     'parent_relationship_pred' => drush_get_option('parent_relationship_pred', 'isMemberOf'),
     'create_pdfs' => drush_get_option('create_pdfs', FALSE),
+    'aggregate_ocr' => drush_get_option('aggregate_ocr', FALSE),
     'email_admin' => drush_get_option('email_admin', FALSE),
     'wait_for_metadata' => drush_get_option('wait_for_metadata', FALSE),
     'directory_dedup' => drush_get_option('directory_dedup', FALSE),

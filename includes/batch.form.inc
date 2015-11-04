@@ -51,6 +51,16 @@ function islandora_newspaper_batch_form($form, &$form_state, $object) {
         '#description' => t('Whether or not we should generate OCR for the pages of the newspaper issue.'),
         '#default_value' => TRUE,
       );
+      $form['aggregate_ocr'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Aggregate OCR?'),
+        '#description' => t('Whether or not we should generate OCR for the issues after ingesting all of the pages.'),
+        '#default_value' => FALSE,
+        '#states' => array(
+          'invisible' => array(
+            ':input[name="generate_ocr"]' => array('checked' => FALSE),
+          ),
+        ),
     }
   }
   $form['email_admin'] = array(

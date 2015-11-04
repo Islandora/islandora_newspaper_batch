@@ -425,6 +425,9 @@ class IslandoraNewspaperIssueBatchObject extends IslandoraNewspaperFlatBatchObje
     if (isset($this->preprocessorParameters['create_pdfs']) && $this->preprocessorParameters['create_pdfs']) {
       islandora_paged_content_set_pdf_flag($this);
     }
+    if (isset($this->preprocessorParameters['aggregate_ocr']) && $this->preprocessorParameters['aggregate_ocr']) {
+      islandora_paged_content_set_ocr_flag($this);
+    }
     // Identify the source of this object.
     $this->relationships->add(ISLANDORA_RELS_EXT_URI, 'newspaper-batched', 'true', RELS_TYPE_PLAIN_LITERAL);
     if (isset($this->preprocessorParameters['email_admin']) && $this->preprocessorParameters['email_admin']) {
