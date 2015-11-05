@@ -172,7 +172,7 @@ class IslandoraNewspaperFlatBatchObject extends IslandoraScanBatchObject {
   protected function getMods() {
     if (!isset($this['MODS'])) {
       $mods_datastream = $this->constructDatastream('MODS', 'X');
-      $mods_datastream->mimetype = 'text/xml';
+      $mods_datastream->mimetype = 'application/xml';
       $mods_datastream->label = 'MODS Record';
 
       $dir = drupal_get_path('module', 'islandora_batch');
@@ -303,7 +303,7 @@ EOXML;
     if (!isset($this['DC'])) {
       // Create the DC datastream on this object.
       $dc_datastream = $this->constructDatastream('DC', 'X');
-      $dc_datastream->mimetype = 'text/xml';
+      $dc_datastream->mimetype = 'application/xml';
       $dc_datastream->label = 'DC Record';
 
       if (isset($this->objectInfo['.']['DC'])) {
