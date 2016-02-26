@@ -17,11 +17,11 @@ The ingest is a two-step process:
 
 The base ZIP/directory preprocessor can be called as a drush script (see `drush help islandora_newspaper_batch_preprocess` for additional parameters):
 
-`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --target=/path/to/issues --namespace=dailyplanet --parent=islandora:dailyplanet`
+`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --scan_target=/path/to/issues --namespace=dailyplanet --parent=islandora:dailyplanet`
 
 This will populate the queue (stored in the Drupal database) with base entries. Note that the --parent parmater must be a newspaper, not a collection.
 
-Batches must be broken up into separate directories (or Zip files), such that each directory at the "top" level (in the target directory or Zip file) represents a newspaper issue. Newspaper pages are their own directories inside of each newsppaper issue directory.
+Batches must be broken up into separate directories (or Zip files), such that each directory at the "top" level (in the scan_target directory or Zip file) represents a newspaper issue. Newspaper pages are their own directories inside of each newsppaper issue directory.
 
 Files are assigned to object datastreams based on their basename, so a folder structure like:
 

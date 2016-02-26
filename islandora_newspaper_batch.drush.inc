@@ -22,7 +22,7 @@ function islandora_newspaper_batch_drush_command() {
         'description' => 'Either "directory" or "zip".',
         'required' => TRUE,
       ),
-      'target' => array(
+      'scan_target' => array(
         'description' => 'The target to directory or zip file to scan.',
         'required' => TRUE,
       ),
@@ -89,7 +89,7 @@ function drush_islandora_newspaper_batch_preprocess() {
   $parameters = array(
     'type' => drush_get_option('type'),
     'namespace' => drush_get_option('namespace'),
-    'target' => drush_get_option('target'),
+    'scan_target' => drush_get_option('scan_target'),
     'parent' => drush_get_option('parent', 'islandora:newspaperCollection'),
     'parent_relationship_uri' => drush_get_option('parent_relationship_uri', 'info:fedora/fedora-system:def/relations-external#'),
     'parent_relationship_pred' => drush_get_option('parent_relationship_pred', 'isMemberOf'),
