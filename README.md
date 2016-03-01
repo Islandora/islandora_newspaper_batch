@@ -12,12 +12,19 @@ The ingest is a two-step process:
   be completed outside of a batch process.
 * Ingest: The data is actually processed and ingested. This happens inside of
   a Drupal batch.
-  
+
 **Usage**
 
 The base ZIP/directory preprocessor can be called as a drush script (see `drush help islandora_newspaper_batch_preprocess` for additional parameters):
 
+Drush made the `target` parameter reserved as of Drush 7. To allow for backwards compatability this will be preserved.
+
+Drush 7 and above:
+
 `drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --scan_target=/path/to/issues --namespace=dailyplanet --parent=islandora:dailyplanet`
+
+Drush 6 and below:
+`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --target=/path/to/issues --namespace=dailyplanet --parent=islandora:dailyplanet`
 
 This will populate the queue (stored in the Drupal database) with base entries. Note that the --parent parmater must be a newspaper, not a collection.
 
@@ -59,7 +66,7 @@ The queue of preprocessed items can then be processed:
 
 `drush -v --user=admin --uri=http://localhost islandora_batch_ingest`
 
-**Sample Issue-level MODS.xml file** 
+**Sample Issue-level MODS.xml file**
 
 Here is a sample MODS file describing a newspaper issue. Note that it does not contain a `<relatedItem>` element as a direct child of `<mods>`:
 
