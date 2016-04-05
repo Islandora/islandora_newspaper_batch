@@ -72,7 +72,7 @@ function islandora_newspaper_batch_drush_command() {
   // backwards compatibility both will be supported. Not using
   // strict-option-handling (http://www.drush.org/en/master/strict-options) as
   // it requires manual argument parsing.
-  if (drush_core_version() >= 7) {
+  if (DRUSH_VERSION >= 7) {
     $items['islandora_newspaper_batch_preprocess']['options']['scan_target'] = array(
       'description' => 'The target to directory or zip file to scan.',
       'required' => TRUE,
@@ -100,7 +100,7 @@ function drush_islandora_newspaper_batch_preprocess() {
   $parameters = array(
     'type' => drush_get_option('type'),
     'namespace' => drush_get_option('namespace'),
-    'target' => drush_core_version() >= 7 ? drush_get_option('scan_target') : drush_get_option('target'),
+    'target' => DRUSH_VERSION >= 7 ? drush_get_option('scan_target') : drush_get_option('target'),
     'parent' => drush_get_option('parent', 'islandora:newspaperCollection'),
     'parent_relationship_uri' => drush_get_option('parent_relationship_uri', 'info:fedora/fedora-system:def/relations-external#'),
     'parent_relationship_pred' => drush_get_option('parent_relationship_pred', 'isMemberOf'),
