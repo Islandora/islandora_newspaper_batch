@@ -5,8 +5,9 @@
 This module extends the Islandora batch framework so as to provide a Drush and
 GUI option to add newspaper issues and pages to an existing newspaper object.
 
-The ingest is a two-step process:
+The ingest is a three-step process:
 
+* Create the "parent" to act as a container for the newpaper to ingest into
 * Preprocessing: The data is scanned and a number of entries are created in the
   Drupal database.  There is minimal processing done at this point, so preprocessing can
   be completed outside of a batch process.
@@ -15,46 +16,63 @@ The ingest is a two-step process:
 
 **Usage**
 
+Before you can ingest a newspaper you must first create the "parent" to hold the pages. Go to [http://localhost:8000/islandora/object/islandora%3Anewspaper_collection](http://localhost:8000/islandora/object/islandora%3Anewspaper_collection)
+
+_Manage > Overview > Add an object to this Collection > Give it a Name > Ingest_<br/>
+
 The base ZIP/directory preprocessor can be called as a drush script (see `drush help islandora_newspaper_batch_preprocess` for additional parameters):
 
 Drush made the `target` parameter reserved as of Drush 7. To allow for backwards compatability this will be preserved.
 
-Drush 7 and above:
+_Note:_
+* You may need to `$cd /var/www/drupal` for these drush commands to work
+* --parent=islandora:{PID}
 
-`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --scan_target=/path/to/issues --namespace=dailyplanet --parent=islandora:dailyplanet`
+### Drush 7 and above:
 
-Drush 6 and below:
-`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --target=/path/to/issues --namespace=dailyplanet --parent=islandora:dailyplanet`
+`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --scan_target=/path/to/issues --namespace=dailyplanet --parent=islandora:1`
 
-This will populate the queue (stored in the Drupal database) with base entries. Note that the --parent parameter must be a newspaper, not a collection.
+### Drush 6 and below:
+
+`drush -v -u 1 --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --target=/path/to/issues --namespace=dailyplanet --parent=islandora:1`
+
+This will populate the queue (stored in the Drupal database) with base entries. Note that the --parent parameter must be a newspaper, not a collection. 
 
 Batches must be broken up into separate directories (or Zip files), such that each directory at the "top" level (in the target directory or Zip file) represents a newspaper issue. Newspaper pages are their own directories inside of each newsppaper issue directory.
 
 Files are assigned to object datastreams based on their basename, so a folder structure like:
 
-* my_batch/
-  * issue1/
-    * MODS.xml
-    * 1/
-        * OBJ.tiff
-    * 2/
-        * OBJ.tiff
+```terminal
+my_batch/
+.
+└── issue1
+    ├── 1
+    │   └── OBJ.tif
+    ├── 2
+    │   └── OBJ.tif
+    └── MODS.xml
+```
 
 would result in a two-page newspaper issue. Other files, with base names corresponding to datastream IDs, can be included in each page subfolder, such as JP2.jp2, OCR.txt, and TN.jpg:
 
-* my_batch/
-  * issue1/
-    * MODS.xml
-    * 1/
-        * OBJ.tiff
-        * JP2.jp2
-        * OCR.txt
-        * TN.jpg
-    * 2/
-        * OBJ.tiff
-        * JP2.jp2
-        * OCR.txt
-        * TN.jpg
+```terminal
+my_batch/
+.
+└── issue1
+    ├── 1
+    │   ├── JP2.jp2
+    │   ├── JPG.jpeg
+    │   ├── OBJ.tif
+    │   ├── OCR.asc
+    │   └── TN.jpeg
+    ├── 2
+    │   ├── JP2.jp2
+    │   ├── JPG.jpeg
+    │   ├── OBJ.tif
+    │   ├── OCR.asc
+    │   └── TN.jpeg
+    └── MODS.xml
+```
 
 If files like these are included, they will be used as the content of their respective datastreams, and the batch process will not recreate the datastreams, which can speed up batch ingests substantially.
 
@@ -62,7 +80,7 @@ A file named --METADATA--.xml can contain either MODS, DC or MARCXML which is us
 
 If no MODS is provided at the newspaper issue level - either directly as MODS.xml, or transformed from either a DC.xml or the "--METADATA--" file discussed above - the directory name will be used as the title.
 
-The queue of preprocessed items can then be processed:
+### The queue of preprocessed items can then be processed:
 
 `drush -v --user=admin --uri=http://localhost islandora_batch_ingest`
 
@@ -100,6 +118,9 @@ Here is a sample MODS file describing a newspaper issue. Note that it does not c
     <identifier>Cjewish-1928-06-01</identifier>
 </mods>
 ```
+
+*You may get a warning. "Failed to get issued date from MODS for dailyplanet:1"*<br/>
+Explanation found in the [wiki](https://wiki.duraspace.org/display/ISLANDORA/Islandora+Newspaper+Batch)
 
 ## Requirements
 
