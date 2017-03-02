@@ -36,4 +36,3 @@ script:
   - $ISLANDORA_DIR/tests/scripts/line_endings.sh sites/all/modules/islandora_newspaper_batch
   - drush coder-review --reviews=production,security,style,i18n,potx,sniffer islandora_newspaper_batch
   - phpcpd --names *.module,*.inc,*.test sites/all/modules/islandora_newspaper_batch
-  - drush test-run --uri=http://localhost:8081 "Islandora Newspaper Batch"
