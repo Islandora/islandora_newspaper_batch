@@ -1,4 +1,4 @@
-sudo: true
+sudo: required
 language: php
 php:
   - 5.3.3
@@ -6,7 +6,7 @@ php:
   - 5.5
 branches:
   only:
-    - 7.x
+    - /^7.x/
 env:
   - FEDORA_VERSION="3.5"
   - FEDORA_VERSION="3.6.2"
@@ -28,9 +28,11 @@ before_install:
   - ln -s $HOME/islandora_paged_content sites/all/modules/islandora_paged_content
   - ln -s $HOME/islandora_solution_pack_collection sites/all/modules/islandora_solution_pack_collection
   - drush en --yes --user=1 islandora_newspaper_batch islandora_basic_collection
+before_script:
+  # Mysql might time out for long tests, increase the wait timeout.
+  - mysql -e 'SET @@GLOBAL.wait_timeout=1200'
 script:
   - ant -buildfile sites/all/modules/islandora_newspaper_batch/build.xml lint
   - $ISLANDORA_DIR/tests/scripts/line_endings.sh sites/all/modules/islandora_newspaper_batch
   - drush coder-review --reviews=production,security,style,i18n,potx,sniffer islandora_newspaper_batch
   - phpcpd --names *.module,*.inc,*.test sites/all/modules/islandora_newspaper_batch
-  - drush test-run --uri=http://localhost:8081 "Islandora Newspaper Batch"
