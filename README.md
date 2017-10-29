@@ -21,6 +21,43 @@ Before you can ingest a newspaper you must first create the "parent" to hold the
 _Manage > Overview > Add an object to this Collection > Give it a Name > Ingest_<br/>
 
 The base ZIP/directory preprocessor can be called as a drush script (see `drush help islandora_newspaper_batch_preprocess` for additional parameters):
+```
+drush help islandora_batch_scan_preprocess
+
+Examples:
+drush -v --user=admin --uri=http://digital.library.yorku.ca islandora_batch_scan_preprocess --content_models=islandora:sp_large_image_cmodel --parent=yul:F0433 --parent_relationship_pred=isMemberOfCollection --type=directory --target=/tmp/batch_ingest
+
+
+Options:
+
+--content_models 
+Supports one or multiple comma-separated content models which are all applied to each ingested object.
+
+--namespace
+Namespace of objects to create. Defaults to namespace specified in Fedora configuration.
+
+--parent
+The collection to which the generated items should be added. Defaults to the root Islandora repository PID.
+
+--parent_relationship_pred 
+The predicate of the relationship to the parent. Defaults to "isMemberOfCollection".
+
+--parent_relationship_uri 
+The namespace URI of the relationship to the parent. Defaults to "info:fedora/fedora-system:def/relations-ex ternal#".
+
+--target 
+The target to directory or zip file to scan. Requires the full path to your archive from root directory. e.g. /var/www/drupal/sites/archive.zip Required.
+
+--type 
+Either "directory" or "zip". The zip importer is unstable with large files (~2GB). Consider alternative methods such as unzipping your Zip file and using Islandora Batch's`--directory` option. Required.
+
+--zip_encoding 
+The encoding of filenames contained in ZIP archives:Only relevant with --scan_target=zip. Defaults to the native encoding being used by PHP.
+
+Aliases: ibsp
+```
+
+** Version Specific Usage **
 
 Drush made the `target` parameter reserved as of Drush 7. To allow for backwards compatability this will be preserved.
 
