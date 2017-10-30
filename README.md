@@ -44,7 +44,7 @@ The collection to which the generated items should be added. Defaults to the roo
 The predicate of the relationship to the parent. Defaults to "isMemberOfCollection".
 
 --parent_relationship_uri 
-The namespace URI of the relationship to the parent. Defaults to "info:fedora/fedora-system:def/relations-ex ternal#".
+The namespace URI of the relationship to the parent. Defaults to "info:fedora/fedora-system:def/relations-external#".
 
 --target 
 The target to directory or zip file to scan. Requires the full path to your archive from root directory. e.g. /var/www/drupal/sites/archive.zip Required.
