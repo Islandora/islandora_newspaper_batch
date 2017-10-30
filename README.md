@@ -49,6 +49,7 @@ Options:
                                            available for them at the newspaper issue level.
 
 Aliases: inbp
+```
 
 Drush made the `target` parameter reserved as of Drush 7. To allow for backwards compatability this will be preserved.
 
