@@ -48,7 +48,7 @@ function islandora_newspaper_batch_form($form, &$form_state, $object) {
       $form['generate_ocr'] = array(
         '#type' => 'checkbox',
         '#title' => t('Generate OCR'),
-        '#description' => t('Generate HOCR for the pages of each newspaper issue.'),
+        '#description' => t('Generate OCR for the pages of each newspaper issue.'),
         '#default_value' => TRUE,
       );
       $form['generate_hocr'] = array(
