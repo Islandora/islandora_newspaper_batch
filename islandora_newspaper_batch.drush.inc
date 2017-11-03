@@ -122,8 +122,10 @@ function drush_islandora_newspaper_batch_preprocess() {
     $parameters['content_models'] = array('islandora:newspaperIssueCModel');
   }
 
-  $parameters['generate_ocr'] = !((bool) drush_get_option('do_not_generate_ocr', FALSE));
-  $parameters['generate_hocr'] = !((bool) drush_get_option('do_not_generate_hocr', FALSE));
+  if (module_exists('islandora_ocr')) {
+    $parameters['generate_ocr'] = !((bool) drush_get_option('do_not_generate_ocr', FALSE));
+    $parameters['generate_hocr'] = !((bool) drush_get_option('do_not_generate_hocr', FALSE));
+  }
 
   $preprocessor = new IslandoraNewspaperBatch($connection, $parameters);
 
