@@ -490,9 +490,12 @@ class IslandoraNewspaperPageBatchObject extends IslandoraNewspaperFlatBatchObjec
     islandora_paged_content_set_relationship($rels_ext, FEDORA_RELS_EXT_URI, 'isMemberOf', $this->parentId);
     // Add content model relationship.
     $this->models = 'islandora:newspaperPageCModel';
+    // The existence of the generate_ocr and generate_hocr parameters is
+    // dependent on the existence of the islandora_ocr module, so one
+    // isset() will suffice.
     if (isset($this->preprocessorParameters['generate_ocr'])) {
       module_load_include('inc', 'islandora_ocr', 'includes/derivatives');
-      islandora_ocr_set_generate_ocr_rels_ext_statement($this, $this->preprocessorParameters['generate_ocr']);
+      islandora_ocr_set_generating_rels_ext_statements($this, (bool) $this->preprocessorParameters['generate_ocr'], (bool) $this->preprocessorParameters['generate_hocr']);
     }
   }
 }
