@@ -35,7 +35,7 @@ Options:
  --directory_dedup                         A flag to indicate that we should avoid repreprocessing newspaper issues which are located in directories.   
  --do_not_generate_ocr                     A flag to allow for conditional OCR generation.                                                 
 
---do_not_generate_hocr                     A flag to allow for conditional HOCR generation.                                               
+ --do_not_generate_hocr                    A flag to allow for conditional HOCR generation.                                               
 
  --email_admin                             A flag to notify the site admin when the newspaper issue is fully ingested (depends on Rules being enabled). 
  --namespace                               The namespace for objects created by this command.  Defaults to namespace set in Fedora config.              
