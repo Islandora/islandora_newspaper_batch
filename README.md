@@ -36,7 +36,7 @@ Options:
  --do_not_generate_ocr                     A flag to allow for conditional OCR generation.                                                              
  --email_admin                             A flag to notify the site admin when the newspaper issue is fully ingested (depends on Rules being enabled). 
  --namespace                               The namespace for objects created by this command.  Defaults to namespace set in Fedora config.              
- --parent                                  The collection to which the generated items should be added.  Only applies to the "newspaper issue" level    
+ --parent                                  The newspaper object to which the generated items should be added.  Only applies to the "newspaper issue" level    
                                            object. If "directory" and the directory containing the newspaper issue description is a valid PID, it will  
                                            be set as the parent. If this is specified and itself is a PID, all newspapers issue will be related to the  
                                            given PID. Required.                                                                                         
