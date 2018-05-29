@@ -31,7 +31,7 @@ function islandora_newspaper_batch_drush_command() {
         'value' => 'optional',
       ),
       'parent' => array(
-        'description' => 'The collection to which the generated items should be added.  Only applies to the "newspaper issue" level object. If "directory" and the directory containing the newspaper issue description is a valid PID, it will be set as the parent. If this is specified and itself is a PID, all newspapers issue will be related to the given PID.',
+        'description' => 'The newspaper object to which the generated items should be added.  Only applies to the "newspaper issue" level object. If "directory" and the directory containing the newspaper issue description is a valid PID, it will be set as the parent. If this is specified and itself is a PID, all newspapers issue will be related to the given PID.',
         'required' => TRUE,
       ),
       'parent_relationship_uri' => array(
