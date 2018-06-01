@@ -47,11 +47,11 @@ function islandora_newspaper_batch_drush_command() {
         'value' => 'optional',
       ),
       'do_not_generate_ocr' => array(
-        'description' => 'A flag to allow for conditional OCR generation.',
+        'description' => 'A flag to disallow conditional OCR generation.',
         'value' => 'optional',
       ),
       'do_not_generate_hocr' => array(
-        'description' => 'A flag to allow for conditional HOCR generation.',
+        'description' => 'A flag to disallow conditional HOCR generation.',
         'value' => 'optional',
       ),
       'aggregate_ocr' => array(
