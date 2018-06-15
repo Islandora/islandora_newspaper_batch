@@ -1,7 +1,7 @@
 name = Islandora Newspaper Batch
 description = "Batch ingest newspaper issue and page objects"
 package = Islandora
-version = 7.x-1.11RC1
+version = 7.x-1.11
 core = 7.x
 dependencies[] = islandora_batch
 dependencies[] = islandora_newspaper
