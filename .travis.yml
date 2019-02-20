@@ -7,15 +7,6 @@ matrix:
    #5.3.3 Ubuntu Precise exceptions
     - php: 5.3.3
       dist: precise
-      env: FEDORA_VERSION="3.5"
-    - php: 5.3.3
-      dist: precise
-      env: FEDORA_VERSION="3.6.2"
-    - php: 5.3.3
-      dist: precise
-      env: FEDORA_VERSION="3.7.0"
-    - php: 5.3.3
-      dist: precise
       env: FEDORA_VERSION="3.8.1"
 php:
   - 5.4
@@ -24,9 +15,6 @@ php:
   - 7.0
   - 7.1
 env:
-  - FEDORA_VERSION="3.5"
-  - FEDORA_VERSION="3.6.2"
-  - FEDORA_VERSION="3.7.0"
   - FEDORA_VERSION="3.8.1"
 
 branches:
@@ -35,19 +23,11 @@ branches:
 before_install:
   - cd $HOME
   - git clone -b 7.x git://github.com/Islandora/islandora.git
-  - git clone -b 7.x git://github.com/Islandora/islandora_batch.git
-  - git clone -b 7.x git://github.com/Islandora/islandora_solution_pack_newspaper.git
-  - git clone -b 7.x git://github.com/Islandora/islandora_paged_content.git
-  - git clone -b 7.x git://github.com/Islandora/islandora_solution_pack_collection.git
   - export ISLANDORA_DIR=$HOME/islandora
   - $HOME/islandora/tests/scripts/travis_setup.sh
   - cd $HOME/drupal-*
   - ln -s $TRAVIS_BUILD_DIR sites/all/modules/islandora_newspaper_batch
-  - ln -s $HOME/islandora_batch sites/all/modules/islandora_batch
-  - ln -s $HOME/islandora_solution_pack_newspaper sites/all/modules/islandora_solution_pack_newspaper
-  - ln -s $HOME/islandora_paged_content sites/all/modules/islandora_paged_content
-  - ln -s $HOME/islandora_solution_pack_collection sites/all/modules/islandora_solution_pack_collection
-  - drush en --yes --user=1 islandora_newspaper_batch islandora_basic_collection
+  - drush en --yes --user=1 islandora_newspaper_batch
 before_script:
   # Mysql might time out for long tests, increase the wait timeout.
   - mysql -e 'SET @@GLOBAL.wait_timeout=1200'
