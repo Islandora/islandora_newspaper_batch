@@ -16,7 +16,8 @@ function islandora_newspaper_batch_drush_command() {
     'description' => 'Preprocessed newspaper issues into database entries.',
     'drupal dependencies' => array('islandora_batch',
       'islandora_newspaper',
-      'islandora_newspaper_batch'),
+      'islandora_newspaper_batch',
+    ),
     'options' => array(
       'type' => array(
         'description' => 'Either "directory" or "zip".',

@@ -12,6 +12,7 @@
  * other two batches extend the base.
  */
 class IslandoraNewspaperBatch extends IslandoraScanBatch {
+
   /**
    * Static function to get object class.
    */
@@ -126,6 +127,7 @@ class IslandoraNewspaperBatch extends IslandoraScanBatch {
 
     return $added;
   }
+
 }
 
 /**
@@ -138,6 +140,7 @@ class IslandoraNewspaperBatch extends IslandoraScanBatch {
  * islandora_batch.
  */
 class IslandoraNewspaperFlatBatchObject extends IslandoraScanBatchObject {
+
   /**
    * Function batchProcess.
    */
@@ -215,7 +218,7 @@ EOXML;
    * Transform from --METADATA--.{mrc,xml} to MODS.
    *
    * @param AbstractDatastream $datastream
-   *   The datastream
+   *   The datastream.
    */
   protected function getModsFromGeneralSource(AbstractDatastream $datastream) {
     $meta = $this->objectInfo['.']['--METADATA--'];
@@ -296,6 +299,7 @@ EOXML;
       }
     }
   }
+
   /**
    * Function batchProcess.
    */
@@ -358,12 +362,14 @@ EOXML;
       }
     }
   }
+
 }
 
 /**
  * Class IslandoraNewspaperIssueBatchObject.
  */
 class IslandoraNewspaperIssueBatchObject extends IslandoraNewspaperFlatBatchObject {
+
   /**
    * Function class constructor.
    */
@@ -434,6 +440,7 @@ class IslandoraNewspaperIssueBatchObject extends IslandoraNewspaperFlatBatchObje
       $this->relationships->add(ISLANDORA_RELS_EXT_URI, 'email-admin-when-ingested', 'true', RELS_TYPE_PLAIN_LITERAL);
     }
   }
+
 }
 
 /**
@@ -498,4 +505,5 @@ class IslandoraNewspaperPageBatchObject extends IslandoraNewspaperFlatBatchObjec
       islandora_ocr_set_generating_rels_ext_statements($this, (bool) $this->preprocessorParameters['generate_ocr'], (bool) $this->preprocessorParameters['generate_hocr']);
     }
   }
+
 }
