@@ -32,6 +32,7 @@ before_install:
   - $HOME/islandora/tests/scripts/travis_setup.sh
   - cd $HOME/drupal-*
   - ln -s $TRAVIS_BUILD_DIR sites/all/modules/islandora_newspaper_batch
+  - ln -s $HOME/islandora_xml_forms sites/all/modules/islandora_xml_forms
   - ln -s $HOME/islandora_batch sites/all/modules/islandora_batch
   - ln -s $HOME/islandora_solution_pack_newspaper sites/all/modules/islandora_solution_pack_newspaper
   - ln -s $HOME/islandora_paged_content sites/all/modules/islandora_paged_content
