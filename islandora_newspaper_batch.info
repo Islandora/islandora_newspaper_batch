@@ -5,6 +5,5 @@ version = 7.x-dev
 core = 7.x
 dependencies[] = islandora_batch
 dependencies[] = islandora_newspaper
-dependencies[] = xml_forms
 files[] = includes/islandora_newspaper_batch.inc
 php = 5.3
