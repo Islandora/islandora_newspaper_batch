@@ -323,7 +323,7 @@ EOXML;
         // XXX: Might want to make this use a file, instead of staging the DC
         // in the database table (inside the object we serialize).
         $new_dc = static::runXslTransform(array(
-          'xsl' => drupal_get_path('module', 'islandora_batch') . '/transforms/mods_to_dc.xsl',
+          'xsl' => drupal_get_path('module', 'islandora') . '/xml/transforms/mods_to_dc.xsl',
           'input' => $this->getMods(),
         ));
         if ($new_dc) {
