@@ -62,7 +62,7 @@ _Note:_
 
 ### Drush 7 and above:
 
-`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --scan_target=/path/to/issues --namespace=dailyplanet --parent=islandora:1`
+`drush -v --user=admin --uri=http://localhost islandora_newspaper_batch_preprocess --type=directory --target=/path/to/issues --namespace=dailyplanet --parent=islandora:1`
 
 ### Drush 6 and below:
 
