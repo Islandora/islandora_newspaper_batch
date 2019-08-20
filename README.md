@@ -27,29 +27,24 @@ drush help islandora_newspaper_batch_preprocess
 Preprocessed newspaper issues into database entries.
 
 Options:
- --aggregate_ocr                           A flag to cause OCR to be aggregated to issues, if OCR is also being generated per-page.                     
- --content_models                          A comma-separated list of content models to assign to the objects. Only applies to the "newspaper issue"     
-                                           level object.                                                                                                
- --create_pdfs                             A flag to cause PDFs to be created in newspaper issues. Page PDF creation is dependant on the configuration  
-                                           within Drupal proper.                                                                                        
- --directory_dedup                         A flag to indicate that we should avoid repreprocessing newspaper issues which are located in directories.   
- --do_not_generate_ocr                     A flag to disallow conditional OCR generation.                                                 
-
- --do_not_generate_hocr                    A flag to disallow conditional HOCR generation.                                               
-
- --email_admin                             A flag to notify the site admin when the newspaper issue is fully ingested (depends on Rules being enabled). 
- --namespace                               The namespace for objects created by this command.  Defaults to namespace set in Fedora config.              
- --parent                                  The newspaper object to which the generated items should be added.  Only applies to the "newspaper issue" level    
-                                           object. If "directory" and the directory containing the newspaper issue description is a valid PID, it will  
-                                           be set as the parent. If this is specified and itself is a PID, all newspapers issue will be related to the  
-                                           given PID. Required.                                                                                         
- --parent_relationship_pred                The predicate of the relationship to the parent. Defaults to "isMemberOf".                                   
- --parent_relationship_uri                 The namespace URI of the relationship to the parent. Defaults to                                             
-                                           "info:fedora/fedora-system:def/relations-external#".                                                         
- --target                                  The target to directory or zip file to scan. Required.                                                       
- --type                                    Either "directory" or "zip". Required.                                                                       
- --wait_for_metadata                       A flag to indicate that we should hold off on trying to ingest newspaper issues until we have metadata       
-                                           available for them at the newspaper issue level.
+ --aggregate_ocr                           A flag to cause OCR to be aggregated to issues, if OCR is also being generated per-page.                                          
+ --content_models                          A comma-separated list of content models to assign to the objects. Only applies to the "newspaper issue" level object.            
+ --create_pdfs                             A flag to cause PDFs to be created in newspaper issues. Page PDF creation is dependant on the configuration within Drupal proper. 
+ --directory_dedup                         A flag to indicate that we should avoid repreprocessing newspaper issues which are located in directories.                        
+ --do_not_generate_hocr                    A flag to disallow conditional HOCR generation.                                                                                   
+ --do_not_generate_ocr                     A flag to disallow conditional OCR generation.                                                                                    
+ --email_admin                             A flag to notify the site admin when the newspaper issue is fully ingested (depends on Rules being enabled).                      
+ --namespace                               The namespace for objects created by this command.  Defaults to namespace set in Fedora config.                                   
+ --output_set_id                           A flag to indicate whether to print the set ID of the preprocessed newspaper issues.                                                     
+ --parent                                  The newspaper object to which the generated items should be added.  Only applies to the "newspaper issue" level object. If        
+                                           "directory" and the directory containing the newspaper issue description is a valid PID, it will be set as the parent. If this is 
+                                           specified and itself is a PID, all newspapers issue will be related to the given PID. Required.                                   
+ --parent_relationship_pred                The predicate of the relationship to the parent. Defaults to "isMemberOf".                                                        
+ --parent_relationship_uri                 The namespace URI of the relationship to the parent. Defaults to "info:fedora/fedora-system:def/relations-external#".             
+ --scan_target                             The target to directory or zip file to scan. Required.                                                                            
+ --type                                    Either "directory" or "zip". Required.                                                                                            
+ --wait_for_metadata                       A flag to indicate that we should hold off on trying to ingest newspaper issues until we have metadata available for them at the  
+                                           newspaper issue level.
 
 Aliases: inbp
 ```

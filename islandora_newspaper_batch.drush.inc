@@ -70,6 +70,10 @@ function islandora_newspaper_batch_drush_command() {
       'directory_dedup' => array(
         'description' => 'A flag to indicate that we should avoid repreprocessing newspaper issues which are located in directories.',
       ),
+      'output_set_id' => array(
+        'description' => 'A flag to indicate whether to print the set ID of the preprocessed newspaper issues.',
+        'value' => 'optional',
+      ),
     ),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_LOGIN,
   );
@@ -132,6 +136,10 @@ function drush_islandora_newspaper_batch_preprocess() {
 
   // Pass the preprocessor off to run.
   $preprocessed = islandora_batch_handle_preprocessor($preprocessor);
+
+  if (drush_get_option('output_set_id', FALSE)) {
+    drush_print($preprocessor->getSetId());
+  }
 }
 
 /**
