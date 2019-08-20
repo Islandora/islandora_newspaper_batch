@@ -458,7 +458,7 @@ class IslandoraNewspaperPageBatchObject extends IslandoraNewspaperFlatBatchObjec
   /**
    * The sequence number of this page inside the parent.
    *
-   * @var integer
+   * @var int
    */
   protected $sequenceNumber;
 
