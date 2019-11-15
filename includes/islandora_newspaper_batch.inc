@@ -447,7 +447,19 @@ class IslandoraNewspaperIssueBatchObject extends IslandoraNewspaperFlatBatchObje
  * Class IslandoraNewspaperPageBatchObject.
  */
 class IslandoraNewspaperPageBatchObject extends IslandoraNewspaperFlatBatchObject {
+
+  /**
+   * The parent PID.
+   *
+   * @var string
+   */
   protected $parentId;
+
+  /**
+   * The sequence number of this page inside the parent.
+   *
+   * @var int
+   */
   protected $sequenceNumber;
 
   /**
